@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
 export default function Login() {
+
+    const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
@@ -23,10 +26,17 @@ export default function Login() {
     let emailRE =
       /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-      let passwordRE = "^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$"
+    //   let passwordRE = "^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$"
       var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
 
-      if(!email){
+
+if(!email && !password){
+setErrorMsg("Please enter the email");
+    setErrorFeild("email");
+    setErrorMsg("Please enter the password");
+    setErrorFeild("password");
+}
+     else if(!email){
     setErrorMsg("Please enter the email");
     setErrorFeild("email");
         }
@@ -40,6 +50,10 @@ export default function Login() {
           } else if (!password.match(regularExpression)) {
             setErrorMsg("Minimum six characters, at least one letter, one number and one special character");
             setErrorFeild("password");
+          }
+          else{
+            alert("Logged Successfully")
+        navigate("/header")
           }
   };
 
@@ -60,8 +74,8 @@ export default function Login() {
          {errorFeild == "email" && <span className="error-msg">{errorMsg}</span>}
         <br />
         <input
-          className="emailId"
-          type="text"
+          className="password"
+          type="password"
           placeholder="   Password"
           onChange={passwordHandler}
           style={{ border: errorFeild == "password" && "1px solid red" }}
