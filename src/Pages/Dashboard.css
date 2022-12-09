@@ -20,7 +20,7 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    background-color: lightblue;
+    background-color:#f7f6f6;
   
 }
 
@@ -31,12 +31,13 @@
     justify-content: center !important;
     align-items: center;
     margin-right: 2em;
-    color: #000;
+   color: white;
     font-size: 1em;
     font-weight: 600;
     font-family: Arial,Noto Sans,sans-serif;
-    background-color: yellow;
+    background-color: #e7c012;
     border: none;
+    cursor: pointer;
 }
 
 .banner-cntr{

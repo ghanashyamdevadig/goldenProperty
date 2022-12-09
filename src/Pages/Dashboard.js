@@ -1,8 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./Dashboard.css"
 import Header from '../Component/Header'
+import Model from '../Component/Model'
 
 export default function Dashboard() {
+
+    const [isOpen , setIsOpen] = useState(false)
+
+    const modelHandler = () =>{
+setIsOpen(!isOpen);
+    }
+
   return (
     <div>
     <Header/>
@@ -12,7 +20,7 @@ export default function Dashboard() {
         <h1>Banner Images</h1>
         </div>
         <div className='button-cntr'>
-            <button className='button-add-img'>Add Images</button>
+            <button className='button-add-img' onClick={modelHandler}>Add Images</button>
         </div>
         <div className='banner-cntr'>
             <p className='total-img-text'>Total Images</p>
@@ -35,6 +43,7 @@ export default function Dashboard() {
 </div>
         </div>
     </div>
+    <Model isOpen = {isOpen} modemodelHandler ={modelHandler}/>
     </div>
   )
 }

@@ -7,19 +7,20 @@ export default function Login() {
     const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMsg, setErrorMsg] = useState("");
-  const [errorFeild, setErrorFeild] = useState("");
+  const [emailErrorMsg, setEmailErrorMsg] = useState("");
+
+  const [passwordErrorMsg, setPasswordtErrorMsg] = useState("");
+
 
   const emailHandler = (event) => {
     setEmail(event.target.value);
-    setErrorMsg(" ");
-    setErrorFeild(" ");
+    setEmailErrorMsg(" ");
   };
 
   const passwordHandler = (event) => {
     setPassword(event.target.value);
-    setErrorMsg(" ");
-    setErrorFeild(" ");
+    setPasswordtErrorMsg(" ");
+    
   };
 
   const submitHandler = () => {
@@ -31,25 +32,22 @@ export default function Login() {
 
 
 if(!email && !password){
-setErrorMsg("Please enter the email");
-    setErrorFeild("email");
-    setErrorMsg("Please enter the password");
-    setErrorFeild("password");
+    setEmailErrorMsg("Please enter email")
+    setPasswordtErrorMsg("Please enter password")
 }
      else if(!email){
-    setErrorMsg("Please enter the email");
-    setErrorFeild("email");
+        setEmailErrorMsg("Please enter email")
         }
         else if(!email.match(emailRE)){
-            setErrorMsg("Please enter valid email");
-            setErrorFeild("email");
+            setEmailErrorMsg("Please enter valid email");
+            
         }
         else if (!password) {
-            setErrorMsg("Please enter the password");
-            setErrorFeild("password");
+            setPasswordtErrorMsg("Please enter the password");
+        
           } else if (!password.match(regularExpression)) {
-            setErrorMsg("Minimum six characters, at least one letter, one number and one special character");
-            setErrorFeild("password");
+            setPasswordtErrorMsg("Minimum six characters, at least one letter, one number and one special character");
+
           }
           else{
             alert("Logged Successfully")
@@ -69,18 +67,18 @@ setErrorMsg("Please enter the email");
           type="text"
           placeholder="   Official email id"
           onChange={emailHandler}
-          style={{ border: errorFeild == "email" && "1px solid red" }}
+          style={{ border: emailErrorMsg && "1px solid red" }}
         />
-         {errorFeild == "email" && <span className="error-msg">{errorMsg}</span>}
+         { <span className="error-msg">{emailErrorMsg}</span>}
         <br />
         <input
           className="password"
           type="password"
           placeholder="   Password"
           onChange={passwordHandler}
-          style={{ border: errorFeild == "password" && "1px solid red" }}
+          style={{ border: passwordErrorMsg && "1px solid red" }}
         />
-         {errorFeild == "password" && <span className="error-msg">{errorMsg}</span>}
+        {<span className="error-msg">{passwordErrorMsg}</span>}
         <br />
         <button className="button-login" onClick={submitHandler}>LOGIN</button>
       </div>
