@@ -53,7 +53,7 @@ setErrorMsg("Please enter the email");
           }
           else{
             alert("Logged Successfully")
-        navigate("/header")
+        navigate("/dash")
           }
   };
 
